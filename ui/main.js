@@ -1,11 +1,22 @@
 //couner code
 var button=document.getElementById('counter');
-var counter=0;
+
 button.onclick= function() {
-    //make request to the counter endpoint
-    
-    
-    counter = counter + 1;
-    var span = document.getElementById('count');
-    span.innerHTML=counter.toString();
+    //create the request object
+    var request=new XMLHttpRequest();
+    //capture the response and store it into a variable
+   request.onreadystatechanged = function(){
+   if(request.readyState===XMLHttpRequest.DONE)   
+   {
+       //take some action
+       if(request.Status==200){
+           var counter = request.responseText;
+           var span = document.getElementById('count');
+           span.innerHTML=counter.toString();
+       }
+   
+   }
+   }
+   request.open('GET','http://shwetashruti1996.imad.hasura-app.io/counter','true');
+   request.send('null');
 };
