@@ -16,7 +16,7 @@ button.onclick= function() {
        }
    
    }
-   }
+   };
    request.open('GET','http://shwetashruti1996.imad.hasura-app.io/counter','true');
    request.send('null');
 };
